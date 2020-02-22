@@ -19,7 +19,7 @@ def not_uploaded(id):
 
 def get_content_upload():
 	while 1:
-		if 1==1:
+		if datetime.now().hour >= 9:
 			cont = 0
 			for sub in subreddit.top('day'):
 				if cont >= 1: break
