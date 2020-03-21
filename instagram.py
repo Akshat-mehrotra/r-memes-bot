@@ -3,10 +3,14 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import pyautogui
-
+from pyvirtualdisplay import Display
 
 class Instagram():
     def __init__(self, user, passwrd):
+        
+        display = Display(visible=0, size=(800, 600))
+        display.start()
+        
         mobile_emulation = {
 
             "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
@@ -14,6 +18,7 @@ class Instagram():
             "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19" }
 
         chrome_options = Options()
+        options.add_argument('--no-sandbox')
         chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
         self.driver = webdriver.Chrome(chrome_options = chrome_options)
         self.driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher")
