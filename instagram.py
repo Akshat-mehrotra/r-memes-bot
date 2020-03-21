@@ -2,7 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from time import sleep
-import autoit
+import pyautogui
+
 
 class Instagram():
     def __init__(self, user, passwrd):
@@ -34,28 +35,25 @@ class Instagram():
         except: pass
         # add to homescreen popup
         try:
-            sleep(1)
+            sleep(2)
             self.driver.find_element_by_xpath("//button[contains(text(),'Cancel')]").click()
         except: pass
 
 
-    def upload(self, caption, path):
-
+    def upload(self, caption, name):
         # find the upload button
         sleep(1)
-        upload = self.driver.find_element_by_xpath("//div[@role='menuitem']")
+
+        upload = self.driver.find_element_by_xpath('//*[@id="react-root"]/section/nav[2]/div/div/div[2]/div/div/div[3]')
         upload.click()
         sleep(1.5)
 
-        autoit.win_active("Open")
-        # enter the file address in the windows file browser popup
-        sleep(1.5)
-        autoit.control_send("Open","Edit1", path.replace('/','\\'))
-        sleep(1.5)
-        autoit.control_send("Open","Edit1","{ENTER}")
-
+        pyautogui.hotkey('ctrl', 'f')
         sleep(2)
-
+        pyautogui.write(name)
+        sleep(2)
+        pyautogui.press('enter')
+        sleep(2)
         next_btn = self.driver.find_element_by_xpath("//button[contains(text(),'Next')]").click()
 
         sleep(1.5)
