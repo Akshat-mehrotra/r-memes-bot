@@ -32,7 +32,7 @@ rc = praw.Reddit(client_id="362R_F8jZdyhiw",
 
 subreddit = rc.subreddit("memes")
 caption_bottom = "\n\n\n\n\n\n #meme #memes #funny #dankmemes #memesdaily #funnymemes #lol #dank #humor #follow #like #dankmeme #lmao #love #anime #ol #edgymemes #dailymemes #comedy #instagram #fun #offensivememes #fortnite #funnymeme #tiktok #memer #memez #memepage #memestagram #bhfyp"
-base = "/home/akshat"
+base = "/home/"
 uploaded_number=0
 
 instagram_client = Instagram(user, passwrd)
